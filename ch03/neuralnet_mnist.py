@@ -32,13 +32,14 @@ def predict(network, x):
     return y
 
 
-x, t = get_data()
+x, t = get_data()  # テストデータの取得
 network = init_network()
 accuracy_cnt = 0
 for i in range(len(x)):
     y = predict(network, x[i])
     p= np.argmax(y) # 最も確率の高い要素のインデックスを取得
+    print("正解:{}, 予想:{}".format(t[i], p))
     if p == t[i]:
         accuracy_cnt += 1
-
+        
 print("Accuracy:" + str(float(accuracy_cnt) / len(x)))
